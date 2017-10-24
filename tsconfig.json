@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "es6", // use ES2015 modules
+    "module": "commonjs",
     "target": "es6", // compile to ES2015 (Babel will do the rest)
     "allowSyntheticDefaultImports": true, // see below
     "baseUrl": "src", // enables you to import relative to this folder
