@@ -2,9 +2,11 @@ import * as React from "react";
 import { ApolloClient, createNetworkInterface } from "react-apollo";
 import { ApolloProvider } from "react-apollo";
 import * as ReactDOM from "react-dom";
+import { injectGlobal } from "styled-components";
 
-import Navigation from "components/navigation";
+import Header from "components/header";
 import Home from "pages/home";
+import * as config from "config";
 
 const client = new ApolloClient({
   // configure the unique id for each object using the object type and id
@@ -15,11 +17,20 @@ const client = new ApolloClient({
   }),
 });
 
+injectGlobal`
+  body {
+    color: ${config.colors.dark};
+    font-family: 'Roboto Slab', serif;
+    font-size: ${config.sizings.base};
+    margin: 0;
+  }
+`;
+
 const App = () => {
   return (
     <ApolloProvider client={client}>
       <div>
-        <Navigation />
+        <Header />
         <Home />
       </div>
     </ApolloProvider>

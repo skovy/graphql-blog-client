@@ -5,7 +5,9 @@
   ],
   "jsRules": {},
   "rules": {
-    "interface-name": [true, "never-prefix"]
+    "interface-name": [true, "never-prefix"],
+    "object-literal-sort-keys": false,
+    "trailing-comma": [true, {"multiline": "never", "singleline": "never"}]
   },
   "rulesDirectory": []
 }
