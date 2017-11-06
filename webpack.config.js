@@ -43,6 +43,10 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html'
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+      'process.env.GRAPHQL_API_URI': JSON.stringify(process.env.GRAPHQL_API_URI || 'http://localhost:5000/graphql')
     })
   ]
 }
