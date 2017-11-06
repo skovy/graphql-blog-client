@@ -20,7 +20,7 @@ const client = new ApolloClient({
 injectGlobal`
   body {
     color: ${config.colors.dark};
-    font-family: 'Roboto Slab', serif;
+    font-family: ${config.fonts.secondary};
     font-size: ${config.sizings.base};
     margin: 0;
   }
