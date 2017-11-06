@@ -26,6 +26,11 @@
     "webpack-dev-server": "^2.9.3"
   },
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "lint": "tslint --project tslint.json",
+    "lint:fix": "yarn lint --fix"
+  },
+  "devDependencies": {
+    "tslint": "^5.8.0"
   }
 }
