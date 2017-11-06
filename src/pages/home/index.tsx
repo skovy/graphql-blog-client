@@ -42,6 +42,7 @@ const getPosts = gql`
   query {
     posts {
       id
+      createdAt
       text
       title
       author {

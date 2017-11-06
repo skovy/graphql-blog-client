@@ -7,4 +7,5 @@ export interface Post {
   text?: string;
   author?: User;
   comments?: Comment[];
+  createdAt?: Date;
 }

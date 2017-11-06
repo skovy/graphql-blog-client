@@ -21,7 +21,7 @@ const Description = styled.h2`
   font-size: ${config.sizings.lg};
   color: ${config.colors.brand};
   border-left: ${config.sizings.sm} solid ${config.colors.brand};
-  margin: 0 0 ${config.sizings.lg};
+  margin: 0 0 ${config.sizings.xl};
   padding: 0 0 0 ${config.sizings.base};
   font-weight: ${config.weights.light};
 `;
