@@ -1,8 +1,8 @@
-import * as React from 'react'
-import gql from 'graphql-tag'
-import { graphql, ChildProps } from 'react-apollo';
+import gql from "graphql-tag";
+import * as React from "react";
+import { ChildProps, graphql } from "react-apollo";
 
-import { Post } from 'types';
+import { Post } from "types";
 
 interface Response {
   posts: Post[];
@@ -15,8 +15,7 @@ class HomeBase extends React.Component<Props> {
     const { data } = this.props;
 
     if (data && data.loading) { return <div>Loading</div>; }
-    if (data && data.error) { return <div>{data.error}</div> }
-
+    if (data && data.error) { return <div>{data.error}</div>; }
 
     return (
       <div>

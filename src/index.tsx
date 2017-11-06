@@ -1,10 +1,10 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import { ApolloClient, createNetworkInterface } from 'react-apollo';
-import { ApolloProvider } from 'react-apollo'
+import * as React from "react";
+import { ApolloClient, createNetworkInterface } from "react-apollo";
+import { ApolloProvider } from "react-apollo";
+import * as ReactDOM from "react-dom";
 
-import Navigation from 'components/navigation';
-import Home from 'pages/home';
+import Navigation from "components/navigation";
+import Home from "pages/home";
 
 const client = new ApolloClient({
   // configure the unique id for each object using the object type and id
@@ -23,7 +23,7 @@ const App = () => {
         <Home />
       </div>
     </ApolloProvider>
-  )
-}
+  );
+};
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById("root"));
