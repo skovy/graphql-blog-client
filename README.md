@@ -1,7 +1,7 @@
 # GraphQL Blog Client
 
 This repository is a React Apollo client for a GraphQL blog. It does not contain
-the API necessary. It consumes and presents the data from
+the API necessary. It consumes and presents the data from an API identical to
 [`graphql-blog-api`](https://github.com/Skovy/graphql-blog-api).
 
 ## Technologies
