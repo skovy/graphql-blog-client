@@ -7,11 +7,7 @@
     "sourceMap": true, // make TypeScript generate sourcemaps
     "outDir": "ts-build", // output directory to build to (irrelevant because we use Webpack most of the time)
     "jsx": "preserve", // enable JSX mode, but "preserve" tells TypeScript to not transform it (we'll use Babel)
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "noImplicitReturns": true,
-    "noUnusedParameters": true,
-    "skipLibCheck": true
+    "strict": true
   },
   "exclude": [
     "node_modules"
