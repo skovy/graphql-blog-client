@@ -12,7 +12,7 @@ const Topbar = styled.div`
 
 const Title = styled.h1`
   font-family: ${config.fonts.primary};
-  font-size: ${config.sizings.xl};
+  font-size: ${config.sizings.lg};
   margin: 0 0 ${config.sizings.lg};
   padding: 0;
 `;
@@ -25,7 +25,7 @@ class Header extends React.Component<{}> {
         <Container>
           <Title>
             <Link to="/">
-              blog
+              myblog
             </Link>
           </Title>
         </Container>
