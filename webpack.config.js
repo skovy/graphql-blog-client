@@ -14,7 +14,8 @@ module.exports = {
   // configure the output directory and publicPath for the devServer
   output: {
     filename: 'app.js',
-    path: path.resolve('dist')
+    path: path.resolve('dist'),
+    publicPath: '/'
   },
 
   // configure the dev server to run
