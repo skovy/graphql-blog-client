@@ -1,10 +1,11 @@
 import * as React from "react";
 import { ApolloClient, createNetworkInterface } from "react-apollo";
 import { ApolloProvider } from "react-apollo";
-import * as ReactDOM from "react-dom";
+import { render } from "react-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { injectGlobal } from "styled-components";
 
-import Header from "components/header";
+import { Header } from "components/header";
 import * as config from "config";
 import Home from "pages/home";
 
@@ -17,6 +18,7 @@ const client = new ApolloClient({
   })
 });
 
+// Override the global body styles and add default styles
 // tslint:disable-next-line:no-unused-expression
 injectGlobal`
   body {
@@ -30,12 +32,14 @@ injectGlobal`
 const App = () => {
   return (
     <ApolloProvider client={client}>
-      <div>
-        <Header />
-        <Home />
-      </div>
+      <BrowserRouter>
+        <div>
+          <Header />
+          <Route exact path="/" component={Home} />
+        </div>
+      </BrowserRouter>
     </ApolloProvider>
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("root"));
+render(<App />, document.getElementById("root"));

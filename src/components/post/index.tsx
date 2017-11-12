@@ -2,6 +2,7 @@ import * as moment from "moment";
 import * as React from "react";
 import styled from "styled-components";
 
+import { Link } from "components/link";
 import * as config from "config";
 import { Post as PostType } from "types";
 
@@ -37,7 +38,9 @@ class Post extends React.Component<Props> {
           Posted By {post.author && post.author.name} {moment.utc(post.createdAt, "YYYY-MM-DD H:m:s Z").fromNow()}
         </PostMetadata>
         <PostTitle>
-          {post.title}
+          <Link to={`/posts/${post.id}`}>
+            {post.title}
+          </Link>
         </PostTitle>
         <PostDesription>
           {post.text}
@@ -47,4 +50,4 @@ class Post extends React.Component<Props> {
   }
 }
 
-export default Post;
+export { Post };

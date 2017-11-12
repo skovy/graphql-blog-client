@@ -1,10 +1,22 @@
 import gql from "graphql-tag";
 import * as React from "react";
 import { ChildProps, graphql } from "react-apollo";
+import styled from "styled-components";
 
-import Container from "components/container";
-import Post from "components/post";
+import { Container } from "components/container";
+import { Post } from "components/post";
+import * as config from "config";
 import { Post as PostType } from "types";
+
+const Description = styled.h2`
+  font-family: ${config.fonts.primary};
+  font-size: ${config.sizings.lg};
+  color: ${config.colors.brand};
+  border-left: ${config.sizings.sm} solid ${config.colors.brand};
+  margin: 0 0 ${config.sizings.xl};
+  padding: 0 0 0 ${config.sizings.base};
+  font-weight: ${config.weights.light};
+`;
 
 interface Result {
   posts: PostType[];
@@ -16,6 +28,9 @@ class HomeBase extends React.Component<Props> {
   public render() {
     return (
       <Container>
+        <Description>
+          long-winded thoughts on things, objects, stuff, information and more.
+        </Description>
         {this.renderContent()}
       </Container>
     );
