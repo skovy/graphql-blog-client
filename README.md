@@ -12,6 +12,7 @@ the API necessary. It consumes and presents the data from
 - [TypeScript](https://www.typescriptlang.org/) - TypeScript is a superset of JavaScript that compiles to clean JavaScript output.
 - [React Apollo](https://github.com/apollographql/react-apollo) - React higher-order component for Apollo Client.
 - [styled-components](https://github.com/styled-components/styled-components) - Visual primitives for the component age 💅.
+- [React Router](https://github.com/ReactTraining/react-router) - Declarative routing for React.
 
 ## Features
 
@@ -40,5 +41,4 @@ the API necessary. It consumes and presents the data from
 
 ## Next Steps
 
-- [ ] React Router
-- [ ] Redux
+- [ ] Upgrade Apollo to v2
