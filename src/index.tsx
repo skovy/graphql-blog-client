@@ -5,18 +5,19 @@ import * as ReactDOM from "react-dom";
 import { injectGlobal } from "styled-components";
 
 import Header from "components/header";
-import Home from "pages/home";
 import * as config from "config";
+import Home from "pages/home";
 
 const client = new ApolloClient({
   // configure the unique id for each object using the object type and id
   dataIdFromObject: (o: { __typename: string, id: string }) => `${o.__typename}:${o.id}`,
   networkInterface: createNetworkInterface({
     // configure the GraphQL endpoint
-    uri: process.env.GRAPHQL_API_URI,
-  }),
+    uri: process.env.GRAPHQL_API_URI
+  })
 });
 
+// tslint:disable-next-line:no-unused-expression
 injectGlobal`
   body {
     color: ${config.colors.dark};
