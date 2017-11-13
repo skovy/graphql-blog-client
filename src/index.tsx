@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { injectGlobal } from "styled-components";
 
 import { Header } from "components/header";
-import * as config from "config";
+import { config } from "config";
 import Home from "pages/home";
 import Post from "pages/post";
 

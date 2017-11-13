@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import * as config from "config";
+import { config } from "config";
 
 const Container = styled.div`
   max-width: ${config.general.maxWidth};

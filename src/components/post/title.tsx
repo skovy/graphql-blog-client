@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import * as config from "config";
+import { config } from "config";
 
 const PostTitle = styled.h3`
   font-family: ${config.fonts.primary};

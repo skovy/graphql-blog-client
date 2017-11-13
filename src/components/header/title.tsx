@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import * as config from "config";
+import { config } from "config";
 
 // A title for the header of the blog
 const HeaderTitle = styled.h1`

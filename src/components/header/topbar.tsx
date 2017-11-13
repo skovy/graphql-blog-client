@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import * as config from "config";
+import { config } from "config";
 
 // A topbar for the header to display the brand theme color
 const HeaderTopbar = styled.div`

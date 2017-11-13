@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import { Container } from "components/container";
 import { Post } from "components/post";
-import * as config from "config";
+import { config } from "config";
 import { Post as PostType } from "types";
 
 const Description = styled.h2`

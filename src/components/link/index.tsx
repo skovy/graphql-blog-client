@@ -1,7 +1,7 @@
+import { Link as RouterLink } from "react-router-dom";
 import styled from "styled-components";
 
-import * as config from "config";
-import { Link as RouterLink } from "react-router-dom";
+import { config } from "config";
 
 const Link = styled(RouterLink)`
   color: ${config.colors.dark};
