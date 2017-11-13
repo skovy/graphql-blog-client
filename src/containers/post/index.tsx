@@ -64,4 +64,4 @@ const Post = graphql<Result, RouteComponentProps<{ id: number }>>(
   { options: (props) => ({ variables: { id: props.match.params.id } }) }
 )(PostBase);
 
-export default Post;
+export { Post };

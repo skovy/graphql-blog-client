@@ -7,8 +7,8 @@ import { injectGlobal } from "styled-components";
 
 import { Header } from "components/header";
 import { config } from "config";
-import Home from "pages/home";
-import Post from "pages/post";
+import { Home } from "containers/home";
+import { Post } from "containers/post";
 
 const client = new ApolloClient({
   // configure the unique id for each object using the object type and id

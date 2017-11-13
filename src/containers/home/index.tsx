@@ -69,4 +69,4 @@ const getPosts = gql`
 
 const Home = graphql<Result, {}>(getPosts)(HomeBase);
 
-export default Home;
+export { Home };
