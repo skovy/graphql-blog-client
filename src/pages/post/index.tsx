@@ -3,7 +3,6 @@ import * as React from "react";
 import { ChildProps, graphql } from "react-apollo";
 
 import { Container } from "components/container";
-import * as config from "config";
 import { RouteComponentProps } from "react-router-dom";
 import { Post as PostType } from "types";
 
