@@ -1,8 +1,8 @@
-import gql from "graphql-tag";
 import * as React from "react";
 import { ChildProps, graphql } from "react-apollo";
 
 import { Container } from "components/container";
+import { queries } from "queries";
 import { RouteComponentProps } from "react-router-dom";
 import { Post as PostType } from "types";
 
@@ -45,22 +45,8 @@ class PostBase extends React.Component<Props> {
   }
 }
 
-const getPosts = gql`
-  query GetPost($id: ID!) {
-    post(id: $id) {
-      id
-      createdAt
-      text
-      title
-      author {
-        name
-      }
-    }
-  }
-`;
-
 const Post = graphql<Result, RouteComponentProps<{ id: number }>>(
-  getPosts,
+  queries.getPost,
   { options: (props) => ({ variables: { id: props.match.params.id } }) }
 )(PostBase);
 

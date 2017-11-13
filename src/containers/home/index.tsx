@@ -1,4 +1,3 @@
-import gql from "graphql-tag";
 import * as React from "react";
 import { ChildProps, graphql } from "react-apollo";
 import styled from "styled-components";
@@ -6,6 +5,7 @@ import styled from "styled-components";
 import { Container } from "components/container";
 import { Post } from "components/post";
 import { config } from "config";
+import { queries } from "queries";
 import { Post as PostType } from "types";
 
 const Description = styled.h2`
@@ -53,20 +53,6 @@ class HomeBase extends React.Component<Props> {
   }
 }
 
-const getPosts = gql`
-  query {
-    posts {
-      id
-      createdAt
-      text
-      title
-      author {
-        name
-      }
-    }
-  }
-`;
-
-const Home = graphql<Result, {}>(getPosts)(HomeBase);
+const Home = graphql<Result, {}>(queries.getPosts)(HomeBase);
 
 export { Home };
