@@ -6,7 +6,7 @@ import { Container } from "components/container";
 import { Post } from "components/post";
 import { config } from "config";
 import { queries } from "queries";
-import { Post as PostType } from "types";
+import { PostType } from "types";
 
 const Description = styled.h2`
   font-family: ${config.fonts.primary};

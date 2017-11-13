@@ -1,11 +1,11 @@
-import { Comment } from "./comment";
-import { User } from "./user";
+import { CommentType } from "./comment";
+import { UserType } from "./user";
 
-export interface Post {
+export interface PostType {
   id: number;
   title?: string;
   text?: string;
-  author?: User;
-  comments?: Comment[];
+  author?: UserType;
+  comments?: CommentType[];
   createdAt?: Date;
 }

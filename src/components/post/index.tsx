@@ -2,7 +2,7 @@ import * as moment from "moment";
 import * as React from "react";
 
 import { Link } from "components/link";
-import { Post as PostType } from "types";
+import { PostType } from "types";
 import { PostAuthor } from "./author";
 import { PostDescription } from "./description";
 import { PostTitle } from "./title";

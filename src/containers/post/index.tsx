@@ -4,7 +4,7 @@ import { ChildProps, graphql } from "react-apollo";
 import { Container } from "components/container";
 import { queries } from "queries";
 import { RouteComponentProps } from "react-router-dom";
-import { Post as PostType } from "types";
+import { PostType } from "types";
 
 // The result on the data prop from the GraphQL query
 interface Result {
