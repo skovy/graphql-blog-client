@@ -3,6 +3,7 @@ import { ChildProps, graphql } from "react-apollo";
 
 import { Container } from "components/container";
 import { PageTitle } from "components/page-title";
+import { PostComments } from "components/post/comments";
 import { PostDescription } from "components/post/description";
 import { PostMetadata } from "components/post/metadata";
 import { queries } from "queries";
@@ -36,13 +37,16 @@ class PostShowBase extends React.Component<Props> {
     } else if (data && !data.post) {
       return <div>Post not found.</div>;
     } else if (data && data.post) {
-      return <div>
-        <PageTitle>
-          {data.post.title}
-        </PageTitle>
-        <PostDescription post={data.post} />
-        <PostMetadata post={data.post} />
-      </div>;
+      return (
+        <div>
+          <PageTitle>
+            {data.post.title}
+          </PageTitle>
+          <PostDescription post={data.post} />
+          <PostMetadata post={data.post} />
+          <PostComments post={data.post} />
+        </div>
+      );
     } else {
       return <div />;
     }

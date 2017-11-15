@@ -6,6 +6,6 @@ export interface PostType {
   title?: string;
   text?: string;
   author: UserType;
-  comments?: CommentType[];
+  comments: CommentType[];
   createdAt?: Date;
 }

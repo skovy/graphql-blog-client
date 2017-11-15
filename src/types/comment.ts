@@ -6,4 +6,5 @@ export interface CommentType {
   text?: string;
   post?: PostType;
   author?: UserType;
+  createdAt?: Date;
 }

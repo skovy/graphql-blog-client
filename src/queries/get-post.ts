@@ -10,6 +10,15 @@ const getPost = gql`
       author {
         name
       }
+      comments {
+        id
+        createdAt
+        text
+        author {
+          id
+          name
+        }
+      }
     }
   }
 `;
