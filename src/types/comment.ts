@@ -5,6 +5,6 @@ export interface CommentType {
   id: number;
   text?: string;
   post?: PostType;
-  author?: UserType;
+  author: UserType;
   createdAt?: Date;
 }
