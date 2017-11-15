@@ -1,9 +1,28 @@
+import * as React from "react";
 import styled from "styled-components";
 
+import { Link } from "components/link";
 import { config } from "config";
 
-// A title for the header of the blog
-const HeaderTitle = styled.h1`
+interface Props {
+  className?: string;
+}
+
+class HeaderTitleBase extends React.Component<Props> {
+  public render() {
+    const { className } = this.props;
+
+    return (
+      <h1 className={className}>
+        <Link to="/">
+          myblog
+        </Link>
+      </h1>
+    );
+  }
+}
+
+const HeaderTitle = styled(HeaderTitleBase)`
   font-family: ${config.fonts.primary};
   font-size: ${config.sizings.lg};
   margin: 0 0 ${config.sizings.lg};

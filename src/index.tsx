@@ -8,7 +8,7 @@ import { injectGlobal } from "styled-components";
 import { Header } from "components/header";
 import { config } from "config";
 import { Home } from "containers/home";
-import { Post } from "containers/post";
+import { PostShow } from "containers/post/show";
 
 const client = new ApolloClient({
   // configure the unique id for each object using the object type and id
@@ -38,7 +38,7 @@ const App = () => {
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/posts/:id" component={Post} />
+            <Route path="/posts/:id" component={PostShow} />
           </Switch>
         </div>
       </BrowserRouter>

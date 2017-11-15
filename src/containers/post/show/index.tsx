@@ -2,6 +2,9 @@ import * as React from "react";
 import { ChildProps, graphql } from "react-apollo";
 
 import { Container } from "components/container";
+import { PageTitle } from "components/page-title";
+import { PostDescription } from "components/post/description";
+import { PostMetadata } from "components/post/metadata";
 import { queries } from "queries";
 import { RouteComponentProps } from "react-router-dom";
 import { PostType } from "types";
@@ -14,7 +17,7 @@ interface Result {
 // The entire data prop from the GraphQL query and the props from the router
 type Props = ChildProps<RouteComponentProps<{ id: number }>, Result>;
 
-class PostBase extends React.Component<Props> {
+class PostShowBase extends React.Component<Props> {
   public render() {
     return (
       <Container>
@@ -33,21 +36,22 @@ class PostBase extends React.Component<Props> {
     } else if (data && !data.post) {
       return <div>Post not found.</div>;
     } else if (data && data.post) {
-      return (
-        <div>
-          <h2>{data.post.title}</h2>
-          <p>{data.post.text}</p>
-        </div>
-      );
+      return <div>
+        <PageTitle>
+          {data.post.title}
+        </PageTitle>
+        <PostDescription post={data.post} />
+        <PostMetadata post={data.post} />
+      </div>;
     } else {
       return <div />;
     }
   }
 }
 
-const Post = graphql<Result, RouteComponentProps<{ id: number }>>(
+const PostShow = graphql<Result, RouteComponentProps<{ id: number }>>(
   queries.getPost,
   { options: (props) => ({ variables: { id: props.match.params.id } }) }
-)(PostBase);
+)(PostShowBase);
 
-export { Post };
+export { PostShow };
