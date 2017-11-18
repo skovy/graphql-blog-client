@@ -35,6 +35,7 @@ const UserAvatar = styled(UserAvatarBase)`
   align-items: center;
   justify-content: center;
   box-shadow: ${config.general.boxShadow};
+  flex-shrink: 0;
 
   span {
     font-size: 0.8em;
