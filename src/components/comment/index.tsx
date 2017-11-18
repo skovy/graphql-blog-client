@@ -10,6 +10,12 @@ const CommentContent = styled.div`
   flex: 1 1 auto;
 `;
 
+const CommentDate = styled.div`
+  margin-top: ${config.sizings.xs};
+  color: ${config.colors.dark};
+  font-style: italic;
+`;
+
 const CommentText = styled.div`
   padding: ${config.sizings.base};
   border-radius: ${config.sizings.xs};
@@ -43,7 +49,9 @@ class CommentBase extends React.Component<Props> {
           <CommentText>
             {text}
           </CommentText>
-          {moment.utc(createdAt, "YYYY-MM-DD H:m:s Z").fromNow()}
+          <CommentDate>
+            commented {moment.utc(createdAt, "YYYY-MM-DD H:m:s Z").fromNow()}
+          </CommentDate>
         </CommentContent>
         <UserAvatar user={author} />
       </div>

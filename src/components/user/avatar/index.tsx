@@ -25,7 +25,7 @@ class UserAvatarBase extends React.Component<Props> {
 
 const UserAvatar = styled(UserAvatarBase)`
   background-color: ${config.colors.brand};
-  color: ${config.colors.light};
+  color: ${config.colors.lightest};
   font-family: ${config.fonts.secondary};
   font-size: ${config.sizings.lg};
   width: ${config.sizings.lg};
