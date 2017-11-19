@@ -1,6 +1,11 @@
 import * as React from "react";
 
+import { Button } from "components/button";
 import { Container } from "components/container";
+import { EditorContainer } from "components/editor/container";
+import { EditorFooter } from "components/editor/footer";
+import { Link } from "components/link";
+import { PageTitle } from "components/page-title";
 import { DraftEditorCommand, Editor, EditorState, RichUtils } from "draft-js";
 
 interface State {
@@ -19,20 +24,55 @@ class Write extends React.Component<{}, State> {
   public render() {
     return (
       <Container>
-        Write:
-        <button onClick={this.onBoldClick}>Bold</button>
-        <Editor
-          editorState={this.state.editorState}
-          onChange={this.onChange}
-          handleKeyCommand={this.handleKeyCommand}
-          placeholder="Write your story..."
-        />
+        <PageTitle>
+          Write a Story
+        </PageTitle>
+        <Button onClick={this.onBoldClick}>
+          <i className="fa fa-bold" />
+        </Button>
+        <Button onClick={this.onUnderlineClick}>
+          <i className="fa fa-underline" />
+        </Button>
+        <Button onClick={this.onItalicClick}>
+          <i className="fa fa-italic" />
+        </Button>
+        <Button onClick={this.onCodeClick}>
+          <i className="fa fa-code" />
+        </Button>
+        <EditorContainer>
+          <Editor
+            editorState={this.state.editorState}
+            onChange={this.onChange}
+            handleKeyCommand={this.handleKeyCommand}
+            placeholder="Start your story here..."
+          />
+        </EditorContainer>
+        <EditorFooter>
+          <Link to="/">
+            Cancel
+          </Link>
+          <Button>
+            Publish Story
+          </Button>
+        </EditorFooter>
       </Container>
     );
   }
 
   private onBoldClick = () => {
     this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, "BOLD"));
+  }
+
+  private onUnderlineClick = () => {
+    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, "UNDERLINE"));
+  }
+
+  private onItalicClick = () => {
+    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, "ITALIC"));
+  }
+
+  private onCodeClick = () => {
+    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, "CODE"));
   }
 
   private onChange = (editorState: EditorState) => {
