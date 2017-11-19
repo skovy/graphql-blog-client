@@ -44,7 +44,7 @@ class Write extends React.Component<{}, State> {
             editorState={this.state.editorState}
             onChange={this.onChange}
             handleKeyCommand={this.handleKeyCommand}
-            placeholder="Start your story here..."
+            placeholder="Type your story here..."
           />
         </EditorContainer>
         <EditorFooter>

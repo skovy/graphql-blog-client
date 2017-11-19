@@ -9,8 +9,11 @@ const Button = styled.button`
   padding: ${config.sizings.sm} ${config.sizings.base};
   font-family: ${config.fonts.primary};
   font-size: ${config.sizings.base};
+  box-shadow: ${config.general.boxShadow};
   border: 0;
   margin: 0;
+  cursor: pointer;
+  transition: color 300ms, background-color 300ms;
 
   & + & {
     margin-left: ${config.sizings.sm};
@@ -19,6 +22,8 @@ const Button = styled.button`
   &:hover,
   &:focus {
     outline: none;
+    color: ${config.colors.brand};
+    background-color: ${config.colors.lightest};
   }
 `;
 
