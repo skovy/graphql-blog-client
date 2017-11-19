@@ -37,7 +37,8 @@ module.exports = {
   module: {
     loaders: [
       // .ts(x) files should first pass through the Typescript loader, and then through babel
-      { test: /\.tsx?$/, loaders: ['babel-loader', 'ts-loader'], include: path.resolve('src') }
+      { test: /\.tsx?$/, loaders: ['babel-loader', 'ts-loader'], include: path.resolve('src') },
+      { test: /\.css$/, loader: 'style-loader!css-loader' }
     ]
   },
 

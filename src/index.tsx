@@ -11,6 +11,8 @@ import { Home } from "containers/home";
 import { PostShow } from "containers/post/show";
 import { Write } from "containers/write";
 
+import "draft-js/dist/Draft.css";
+
 const client = new ApolloClient({
   // configure the unique id for each object using the object type and id
   dataIdFromObject: (o: { __typename: string, id: string }) => `${o.__typename}:${o.id}`,
