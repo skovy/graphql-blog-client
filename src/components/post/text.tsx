@@ -6,24 +6,25 @@ import { PostType } from "types";
 
 interface Props {
   className?: string;
+  truncated?: boolean;
   post: PostType;
 }
 
-class PostDescriptionBase extends React.Component<Props> {
+class PostTextBase extends React.Component<Props> {
   public render() {
-    const { className, post: { text } } = this.props;
+    const { className, post: { text }, truncated } = this.props;
 
     return (
       <p className={className}>
-        {text}
+        {text && truncated && text.length > 340 ? `${text.substring(0, 340)}...` : text}
       </p>
     );
   }
 }
 
-const PostDescription = styled(PostDescriptionBase)`
+const PostText = styled(PostTextBase)`
   font-size: ${config.sizings.base};
   margin: 0 0 ${config.sizings.xl};
 `;
 
-export { PostDescription };
+export { PostText };

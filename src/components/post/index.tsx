@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { PostType } from "types";
 import { PostAuthor } from "./author";
-import { PostDescription } from "./description";
+import { PostText } from "./text";
 import { PostTitle } from "./title";
 
 interface Props {
@@ -17,7 +17,7 @@ class Post extends React.Component<Props> {
       <div>
         <PostAuthor post={post} />
         <PostTitle post={post} />
-        <PostDescription post={post} />
+        <PostText post={post} truncated />
       </div>
     );
   }

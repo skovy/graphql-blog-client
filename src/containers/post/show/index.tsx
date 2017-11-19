@@ -4,8 +4,8 @@ import { ChildProps, graphql } from "react-apollo";
 import { Container } from "components/container";
 import { PageTitle } from "components/page-title";
 import { PostComments } from "components/post/comments";
-import { PostDescription } from "components/post/description";
 import { PostMetadata } from "components/post/metadata";
+import { PostText } from "components/post/text";
 import { queries } from "queries";
 import { RouteComponentProps } from "react-router-dom";
 import { PostType } from "types";
@@ -42,7 +42,7 @@ class PostShowBase extends React.Component<Props> {
           <PageTitle>
             {data.post.title}
           </PageTitle>
-          <PostDescription post={data.post} />
+          <PostText post={data.post} />
           <PostMetadata post={data.post} />
           <PostComments post={data.post} />
         </div>
