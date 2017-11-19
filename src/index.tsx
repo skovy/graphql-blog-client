@@ -9,6 +9,7 @@ import { Header } from "components/header";
 import { config } from "config";
 import { Home } from "containers/home";
 import { PostShow } from "containers/post/show";
+import { Write } from "containers/write";
 
 const client = new ApolloClient({
   // configure the unique id for each object using the object type and id
@@ -38,6 +39,7 @@ const App = () => {
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/write" component={Write} />
             <Route path="/posts/:id" component={PostShow} />
           </Switch>
         </div>
