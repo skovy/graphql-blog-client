@@ -4,8 +4,8 @@ import { Button } from "components/button";
 import { Container } from "components/container";
 import { EditorContainer } from "components/editor/container";
 import { EditorFooter } from "components/editor/footer";
+import { EditorTitle } from "components/editor/title";
 import { Link } from "components/link";
-import { PageTitle } from "components/page-title";
 import { UserSelect } from "components/user/select";
 import { DraftEditorCommand, Editor, EditorState, RichUtils } from "draft-js";
 
@@ -25,9 +25,9 @@ class Write extends React.Component<{}, State> {
   public render() {
     return (
       <Container>
-        <PageTitle>
-          Write a Story
-        </PageTitle>
+        <EditorTitle
+          placeholder="Title your story here..."
+        />
         <Button onClick={this.onBoldClick}>
           <i className="fa fa-bold" />
         </Button>
