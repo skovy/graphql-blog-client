@@ -25,7 +25,6 @@ class HeaderTitleBase extends React.Component<Props> {
 const HeaderTitle = styled(HeaderTitleBase)`
   font-family: ${config.fonts.primary};
   font-size: ${config.sizings.lg};
-  margin: 0 0 ${config.sizings.lg};
   padding: 0;
 `;
 

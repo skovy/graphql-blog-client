@@ -9,7 +9,6 @@ const Link = styled(RouterLink)`
 
   &:hover {
     color: ${config.colors.brand};
-    text-decoration: underline;
   }
 `;
 

@@ -51,6 +51,8 @@ const PostMetadata = styled(PostMetadataBase)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: ${config.sizings.base};
+  border-bottom: 1px solid ${config.colors.light};
 `;
 
 export { PostMetadata };
