@@ -4,7 +4,7 @@ import { config } from "config";
 
 const EditorFooter = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-bottom: ${config.sizings.base};
   align-items: center;
 

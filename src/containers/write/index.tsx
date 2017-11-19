@@ -6,6 +6,7 @@ import { EditorContainer } from "components/editor/container";
 import { EditorFooter } from "components/editor/footer";
 import { Link } from "components/link";
 import { PageTitle } from "components/page-title";
+import { UserSelect } from "components/user/select";
 import { DraftEditorCommand, Editor, EditorState, RichUtils } from "draft-js";
 
 interface State {
@@ -48,12 +49,15 @@ class Write extends React.Component<{}, State> {
           />
         </EditorContainer>
         <EditorFooter>
-          <Link to="/">
-            Cancel
-          </Link>
-          <Button>
-            Publish Story
-          </Button>
+          <UserSelect />
+          <div>
+            <Link to="/">
+              Cancel
+            </Link>
+            <Button>
+              Publish Story
+            </Button>
+          </div>
         </EditorFooter>
       </Container>
     );
