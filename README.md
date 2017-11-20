@@ -13,7 +13,8 @@ the API necessary. It consumes and presents the data from an API identical to
 - [React Apollo](https://github.com/apollographql/react-apollo) - React higher-order component for Apollo Client.
 - [styled-components](https://github.com/styled-components/styled-components) - Visual primitives for the component age 💅.
 - [React Router](https://github.com/ReactTraining/react-router) - Declarative routing for React.
-- [Draft](https://draftjs.org/) - Rich text editor framework for React.
+- [Draftjs](https://draftjs.org/) - Rich text editor framework for React.
+- [Express](https://expressjs.com/) - Minimalist web framework for Node.
 
 ## Features
 
