@@ -43,7 +43,7 @@ the API necessary. It consumes and presents the data from an API identical to
   - Run TSLint and fix the errors
 - `cp .env.example .env`
   - Copy and change local environment configurations such as the Express PORT or GraphQL API endpoint
-- `yarn heroku-postbuild`
+- `NODE_ENV=production yarn heroku-postbuild`
   - Build the production bundle, the same used if deployed to Heroku
 - `heroku local`
   - Run in "production mode", using the simple Express server instead of the `webpack-dev-server`

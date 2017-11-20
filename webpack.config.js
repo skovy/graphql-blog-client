@@ -1,6 +1,20 @@
-const webpack = require('webpack')
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const plugins = [
+  new HtmlWebpackPlugin({
+    template: 'src/index.html'
+  }),
+  new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+    'process.env.GRAPHQL_API_URI': JSON.stringify(process.env.GRAPHQL_API_URI || 'http://localhost:5000/graphql')
+  })
+];
+
+if (process.env.NODE_ENV === 'production') {
+  plugins.concat(new webpack.optimize.UglifyJsPlugin());
+}
 
 module.exports = {
   // put sourcemaps inline
@@ -42,13 +56,5 @@ module.exports = {
     ]
   },
 
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'src/index.html'
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-      'process.env.GRAPHQL_API_URI': JSON.stringify(process.env.GRAPHQL_API_URI || 'http://localhost:5000/graphql')
-    })
-  ]
+  plugins: plugins
 }
