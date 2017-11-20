@@ -7,4 +7,5 @@ export interface CommentType {
   post?: PostType;
   author: UserType;
   createdAt?: Date;
+  errors: string[];
 }

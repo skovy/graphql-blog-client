@@ -6,6 +6,7 @@ import { PageTitle } from "components/page-title";
 import { PostComments } from "components/post/comments";
 import { PostMetadata } from "components/post/metadata";
 import { PostText } from "components/post/text";
+import { CommentNew } from "containers/comment/new";
 import { queries } from "queries";
 import { RouteComponentProps } from "react-router-dom";
 import { PostType } from "types";
@@ -45,6 +46,7 @@ class PostShowBase extends React.Component<Props> {
           <PostText post={data.post} richText />
           <PostMetadata post={data.post} />
           <PostComments post={data.post} />
+          <CommentNew post={data.post} />
         </div>
       );
     } else {
