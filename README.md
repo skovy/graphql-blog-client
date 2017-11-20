@@ -19,7 +19,9 @@ the API necessary. It consumes and presents the data from an API identical to
 ## Features
 
 - Display a list of recent blog posts
-- View a single blog post
+- View a single blog post with related comments
+- Create a new post
+- Simple rich text editor for creating posts
 
 ## Setup
 
