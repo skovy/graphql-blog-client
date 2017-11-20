@@ -73,7 +73,7 @@ class CommentNewBase extends React.Component<Props, State> {
           value={this.state.text}
           onChange={(e) => this.setState({ text: e.target.value })}
           rows={3}
-          placeholder={`Add your thoughts on ${post.title}...`}
+          placeholder={`Add your thoughts on "${post.title}"`}
         />
         <Footer>
           <UserSelect userId={this.state.userId} onChange={this.handleUserChange} />
