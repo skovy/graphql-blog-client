@@ -8,4 +8,5 @@ export interface PostType {
   author: UserType;
   comments: CommentType[];
   createdAt?: Date;
+  errors: string[];
 }
