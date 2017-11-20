@@ -42,7 +42,7 @@ class PostShowBase extends React.Component<Props> {
           <PageTitle>
             {data.post.title}
           </PageTitle>
-          <PostText post={data.post} />
+          <PostText post={data.post} richText />
           <PostMetadata post={data.post} />
           <PostComments post={data.post} />
         </div>

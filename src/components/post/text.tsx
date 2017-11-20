@@ -17,28 +17,50 @@ interface Props {
 
 class PostTextBase extends React.Component<Props> {
   public render() {
-    const { className, post: { text }, truncated } = this.props;
+    const { className, post: { text }, richText } = this.props;
 
     // Post text must be present to display any text
     if (!text) { return null; }
 
     try {
       const editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(text)));
-      return (
-        <div className={className}>
-          <Editor
-            editorState={editorState}
-            onChange={() => null} // noop
-            readOnly
-          />
-        </div>
-      );
+
+      if (richText) {
+        // Display "richly" formatted text with a readOnly Draft Editor for the sake of ease (definitely better ways)
+        return (
+          <div className={className}>
+            <Editor
+              editorState={editorState}
+              onChange={() => null} // noop
+              readOnly
+            />
+          </div>
+        );
+      } else {
+        // Display plain text stripped of all formatting
+        return this.formatPlainText(editorState.getCurrentContent().getPlainText());
+      }
     } catch (e) {
-      return (
-        <p className={className}>
-          {text && truncated && text.length > 340 ? `${text.substring(0, 340)}...` : text}
-        </p>
-      );
+      return this.formatPlainText(text);
+    }
+  }
+
+  private formatPlainText(text: string) {
+    const { className, truncated } = this.props;
+
+    return (
+      <p className={className}>
+        {text && truncated ? this.truncateText(text) : text}
+      </p>
+    );
+  }
+
+  private truncateText(text: string): string {
+    // Truncate text any longer than 340 characters
+    if (text.length > 340) {
+      return `${text.substring(0, 340)}...`;
+    } else {
+      return text;
     }
   }
 }
