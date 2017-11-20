@@ -16,6 +16,7 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.7",
     "draft-js": "^0.10.4",
+    "express": "^4.16.2",
     "graphql": "^0.11.7",
     "html-webpack-plugin": "^2.30.1",
     "moment": "^2.19.1",
@@ -33,6 +34,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server",
+    "heroku-postbuild": "webpack -p",
     "lint": "tslint --project tslint.json",
     "lint:fix": "yarn lint --fix"
   },
