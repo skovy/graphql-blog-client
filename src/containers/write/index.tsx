@@ -52,19 +52,19 @@ class WriteBase extends React.Component<Props, State> {
           value={this.state.title}
           onChange={(event) => this.setState({ title: event.target.value })}
         />
-        <Button onClick={this.onBoldClick}>
-          <i className="fa fa-bold" />
-        </Button>
-        <Button onClick={this.onUnderlineClick}>
-          <i className="fa fa-underline" />
-        </Button>
-        <Button onClick={this.onItalicClick}>
-          <i className="fa fa-italic" />
-        </Button>
-        <Button onClick={this.onCodeClick}>
-          <i className="fa fa-code" />
-        </Button>
         <EditorContainer>
+          <Button onClick={this.onBoldClick}>
+            <i className="fa fa-bold" />
+          </Button>
+          <Button onClick={this.onUnderlineClick}>
+            <i className="fa fa-underline" />
+          </Button>
+          <Button onClick={this.onItalicClick}>
+            <i className="fa fa-italic" />
+          </Button>
+          <Button onClick={this.onCodeClick}>
+            <i className="fa fa-code" />
+          </Button>
           <Editor
             editorState={this.state.editorState}
             onChange={this.onChange}
