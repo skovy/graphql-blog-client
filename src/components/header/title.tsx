@@ -15,7 +15,7 @@ class HeaderTitleBase extends React.Component<Props> {
     return (
       <h1 className={className}>
         <Link to="/">
-          myblog
+          GraphQLBlog
         </Link>
       </h1>
     );
