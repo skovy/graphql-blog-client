@@ -50,7 +50,7 @@ class CommentBase extends React.Component<Props> {
             {text}
           </CommentText>
           <CommentDate>
-            commented {moment.utc(createdAt, "YYYY-MM-DD H:m:s Z").fromNow()}
+            {author.name} commented {moment.utc(createdAt, "YYYY-MM-DD H:m:s Z").fromNow()}
           </CommentDate>
         </CommentContent>
         <UserAvatar user={author} />
