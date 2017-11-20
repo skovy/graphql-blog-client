@@ -22,6 +22,7 @@ class PostTextBase extends React.Component<Props> {
     // Post text must be present to display any text
     if (!text) { return null; }
 
+    // Attempt to handle as Draft richly formatted text and fallback to plain text
     try {
       const editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(text)));
 
