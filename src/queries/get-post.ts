@@ -8,6 +8,7 @@ const getPost = gql`
       text
       title
       author {
+        id
         name
       }
       comments {

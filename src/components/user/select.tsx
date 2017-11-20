@@ -12,6 +12,8 @@ interface Result {
 
 interface OwnProps {
   className?: string;
+  userId: number;
+  onChange(userId: number): void;
 }
 
 type Props = ChildProps<OwnProps, Result>;
@@ -32,7 +34,8 @@ class UserSelectBase extends React.Component<Props> {
           <span>
             Posted by
           </span>
-          <select>
+          <select value={this.props.userId} onChange={this.handleChange}>
+            <option id="0" value="0">Select a user</option>
             {data.users.map((user) => <option key={user.id} value={user.id}>{user.name}</option>)}
           </select>
         </div>
@@ -41,11 +44,15 @@ class UserSelectBase extends React.Component<Props> {
       return <div />;
     }
   }
+
+  private handleChange = (e: React.FormEvent<HTMLSelectElement>) => {
+    this.props.onChange(parseInt(e.currentTarget.value, 10));
+  }
 }
 
 const UserSelectStyled = styled(UserSelectBase)`
   display: flex;
-  font-family: ${config.fonts.primary};
+  font-family: ${config.fonts.secondary};
   font-size: ${config.sizings.base};
   align-items: center;
 
@@ -64,6 +71,6 @@ const UserSelectStyled = styled(UserSelectBase)`
   }
 `;
 
-const UserSelect = graphql<Result, {}>(queries.getUsers)(UserSelectStyled);
+const UserSelect = graphql<Result, OwnProps>(queries.getUsers)(UserSelectStyled);
 
 export { UserSelect };

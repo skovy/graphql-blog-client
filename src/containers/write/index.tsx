@@ -1,4 +1,5 @@
 import * as React from "react";
+import { graphql, ChildProps } from "react-apollo";
 
 import { Button } from "components/button";
 import { Container } from "components/container";
@@ -7,18 +8,23 @@ import { EditorFooter } from "components/editor/footer";
 import { EditorTitle } from "components/editor/title";
 import { Link } from "components/link";
 import { UserSelect } from "components/user/select";
-import { DraftEditorCommand, Editor, EditorState, RichUtils } from "draft-js";
+import { convertToRaw, DraftEditorCommand, Editor, EditorState, RichUtils } from "draft-js";
+import { mutations } from "mutations";
 
 interface State {
   editorState: EditorState;
+  title: string;
+  userId: number;
 }
 
-class Write extends React.Component<{}, State> {
+class WriteBase extends React.Component<ChildProps<{}, {}>, State> {
   constructor(props: {}) {
     super(props);
 
     this.state = {
-      editorState: EditorState.createEmpty()
+      editorState: EditorState.createEmpty(),
+      title: "",
+      userId: 0
     };
   }
 
@@ -27,6 +33,8 @@ class Write extends React.Component<{}, State> {
       <Container>
         <EditorTitle
           placeholder="Title your story here..."
+          value={this.state.title}
+          onChange={(event) => this.setState({ title: event.target.value })}
         />
         <Button onClick={this.onBoldClick}>
           <i className="fa fa-bold" />
@@ -49,18 +57,36 @@ class Write extends React.Component<{}, State> {
           />
         </EditorContainer>
         <EditorFooter>
-          <UserSelect />
+          <UserSelect onChange={this.handleUserChange} userId={this.state.userId} />
           <div>
             <Link to="/">
               Cancel
             </Link>
-            <Button>
+            <Button type="submit" onClick={this.handleSubmit}>
               Publish Story
             </Button>
           </div>
         </EditorFooter>
       </Container>
     );
+  }
+
+  private handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    const { mutate } = this.props;
+
+    const text = JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent()));
+
+    mutate && mutate({
+      variables: { text, user_id: this.state.userId, title: this.state.title }
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+  private handleUserChange = (userId: number) => {
+    this.setState({ userId });
   }
 
   private onBoldClick = () => {
@@ -92,5 +118,7 @@ class Write extends React.Component<{}, State> {
     return "not-handled";
   }
 }
+
+const Write = graphql(mutations.addPost)(WriteBase);
 
 export { Write };
