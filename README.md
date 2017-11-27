@@ -53,3 +53,17 @@ the API necessary. It consumes and presents the data from an API identical to
 ## Next Steps
 
 - [ ] Upgrade Apollo to v2
+
+## Screenshots
+
+### Home
+
+![home](/docs/home.png)
+
+### Post
+
+![post](/docs/post.png)
+
+### Write
+
+![write](/docs/write.png)
