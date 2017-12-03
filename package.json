@@ -6,6 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "@types/draft-js": "^0.10.17",
+    "@types/graphql": "^0.11.7",
     "@types/react": "^16.0.18",
     "@types/react-dom": "^16.0.2",
     "@types/react-router-dom": "^4.2.1",
