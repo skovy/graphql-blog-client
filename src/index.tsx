@@ -11,13 +11,14 @@ import { Home } from "containers/home";
 import { PostShow } from "containers/post/show";
 import { Write } from "containers/write";
 
+// Include the default styles for the Draftjs editor
 import "draft-js/dist/Draft.css";
 
 const client = new ApolloClient({
-  // configure the unique id for each object using the object type and id
+  // Configure the unique ID for each object using the object type and ID
   dataIdFromObject: (o: { __typename: string, id: string }) => `${o.__typename}:${o.id}`,
   networkInterface: createNetworkInterface({
-    // configure the GraphQL endpoint
+    // Configure the GraphQL endpoint
     uri: process.env.GRAPHQL_API_URI
   })
 });
@@ -33,6 +34,7 @@ injectGlobal`
   }
 `;
 
+// Setup the root of the application, Apollo client provider, routing, etc
 const App = () => {
   return (
     <ApolloProvider client={client}>
