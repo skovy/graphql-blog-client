@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 const getUsers = gql`
-  query {
+  query GetUsers {
     users {
       id
       name

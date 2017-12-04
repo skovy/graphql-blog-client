@@ -1,27 +1,14 @@
 import gql from "graphql-tag";
 
+import { fragments } from "fragments";
+
 const getPost = gql`
   query GetPost($id: ID!) {
     post(id: $id) {
-      id
-      createdAt
-      text
-      title
-      author {
-        id
-        name
-      }
-      comments {
-        id
-        createdAt
-        text
-        author {
-          id
-          name
-        }
-      }
+      ...PostsShowPost
     }
   }
+  ${fragments.postsShowPost}
 `;
 
 export { getPost };

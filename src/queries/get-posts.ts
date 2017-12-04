@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 const getPosts = gql`
-  query {
+  query GetPosts {
     posts {
       id
       createdAt
