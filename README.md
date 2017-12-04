@@ -22,6 +22,7 @@ the API necessary. It consumes and presents the data from an API identical to
 - View a single blog post with related comments
 - Create a new post
 - Simple rich text editor for creating posts
+- Prefetch a post when hovering over the post title
 
 ## Setup
 
