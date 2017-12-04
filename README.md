@@ -53,7 +53,7 @@ the API necessary. It consumes and presents the data from an API identical to
 
 ## Next Steps
 
-- [ ] Upgrade Apollo to v2
+- [ ] Upgrade Apollo to V2 (#1)
 
 ## Screenshots
 
