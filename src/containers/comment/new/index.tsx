@@ -108,11 +108,6 @@ class CommentNewBase extends React.Component<Props, State> {
     const { mutate, post } = this.props;
     mutate && mutate({
       variables: { text, user_id: userId, post_id: post.id },
-      // Refetch the current post to get an updated list of comments
-      refetchQueries: [{
-        query: queries.getPost,
-        variables: { id: post.id }
-      }],
       // Optimistically add the comment
       optimisticResponse: {
         addComment: {
@@ -126,11 +121,21 @@ class CommentNewBase extends React.Component<Props, State> {
             author: {
               __typename: "User",
               id: 0,
-              name: "?"
+              name: ""
             },
             text
           }
         }
+      },
+      // Update the current post to have an updated list of comments.
+      // Used by both the optimistic UI and the actual server response.
+      update: (store, { data }) => {
+        // Read the data from our cache for this query.
+        const cacheData = store.readQuery<{ post: PostType }>({ query: queries.getPost, variables: { id: post.id } });
+        // Add our comment from the mutation to the end.
+        cacheData.post.comments.push(data && data.addComment.comment);
+        // Write our data back to the cache.
+        store.writeQuery({ query: queries.getPost, variables: { id: post.id }, data: cacheData });
       }
     }).catch((error) => {
       // We had missing data, malformed query, etc - likely on the client
