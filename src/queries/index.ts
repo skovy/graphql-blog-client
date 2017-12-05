@@ -1,9 +1,11 @@
-import { getPost } from "./get-post";
+import { getPostDetails } from "./get-post-details";
+import { getPostOverview } from "./get-post-overview";
 import { getPosts } from "./get-posts";
 import { getUsers } from "./get-users";
 
 const queries = {
-  getPost,
+  getPostDetails,
+  getPostOverview,
   getPosts,
   getUsers
 };

@@ -40,7 +40,7 @@ interface Result {
 }
 
 interface OwnProps {
-  post: PostType;
+  post: Partial<PostType>;
 }
 
 type Props = ChildProps<OwnProps, Result>;
@@ -65,6 +65,8 @@ class CommentNewBase extends React.Component<Props, State> {
   public render() {
     const { post } = this.props;
     const { error } = this.state;
+
+    if (!post) { return null; }
 
     return (
       <div>
@@ -131,11 +133,13 @@ class CommentNewBase extends React.Component<Props, State> {
       // Used by both the optimistic UI and the actual server response.
       update: (store, { data }) => {
         // Read the data from our cache for this query.
-        const cacheData = store.readQuery<{ post: PostType }>({ query: queries.getPost, variables: { id: post.id } });
+        const cacheData = store.readQuery<{ post: PostType }>({
+          query: queries.getPostDetails, variables: { id: post.id }
+        });
         // Add our comment from the mutation to the end.
         cacheData.post.comments.push(data && data.addComment.comment);
         // Write our data back to the cache.
-        store.writeQuery({ query: queries.getPost, variables: { id: post.id }, data: cacheData });
+        store.writeQuery({ query: queries.getPostDetails, variables: { id: post.id }, data: cacheData });
       }
     }).catch((error) => {
       // We had missing data, malformed query, etc - likely on the client

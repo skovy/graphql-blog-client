@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ChildProps, graphql } from "react-apollo";
+import { compose, graphql, QueryProps } from "react-apollo";
 
 import { Container } from "components/container";
 import { PageTitle } from "components/page-title";
@@ -11,42 +11,44 @@ import { queries } from "queries";
 import { RouteComponentProps } from "react-router-dom";
 import { PostType } from "types";
 
+// The props from the router
+type OwnProps = RouteComponentProps<{ id: number }>;
+
 // The result on the data prop from the GraphQL query
 interface Result {
-  post: PostType;
+  postOverview: {
+    post: Partial<PostType>;
+  } & QueryProps;
+  postDetails: {
+    post: Partial<PostType>;
+  } & QueryProps;
 }
 
-// The entire data prop from the GraphQL query and the props from the router
-type Props = ChildProps<RouteComponentProps<{ id: number }>, Result>;
+// The entire data prop from the GraphQL query
+type Props = OwnProps & Result;
 
 class PostShowBase extends React.Component<Props> {
   public render() {
-    return (
-      <Container>
-        {this.renderContent()}
-      </Container>
-    );
+    return <Container>{this.renderContent()}</Container>;
   }
 
   private renderContent(): JSX.Element {
-    const { data } = this.props;
+    const { postOverview, postDetails } = this.props;
 
-    if (data && data.loading) {
+    if (postOverview && postOverview.loading) {
       return <div>Loading</div>;
-    } else if (data && data.error) {
-      return <div>{data.error}</div>;
-    } else if (data && !data.post) {
+    } else if (postOverview && postOverview.error) {
+      return <div>{postOverview.error}</div>;
+    } else if (postOverview && !postOverview.post) {
       return <div>Post not found.</div>;
-    } else if (data && data.post) {
+    } else if (postOverview && postOverview.post) {
       return (
         <div>
-          <PageTitle>
-            {data.post.title}
-          </PageTitle>
-          <PostText post={data.post} richText />
-          <PostMetadata post={data.post} />
-          <PostComments post={data.post} />
-          <CommentNew post={data.post} />
+          <PageTitle>{postOverview.post.title}</PageTitle>
+          <PostText post={postOverview.post} richText />
+          <PostMetadata post={postOverview.post} />
+          <PostComments post={postDetails && postDetails.post} />
+          <CommentNew post={postDetails && postDetails.post} />
         </div>
       );
     } else {
@@ -55,9 +57,19 @@ class PostShowBase extends React.Component<Props> {
   }
 }
 
-const PostShow = graphql<Result, RouteComponentProps<{ id: number }>>(
-  queries.getPost,
-  { options: (props) => ({ variables: { id: props.match.params.id } }) }
+const options = (props: OwnProps) => ({
+  variables: { id: props.match.params.id }
+});
+
+const PostShow = compose(
+  graphql<Result, OwnProps>(queries.getPostOverview, {
+    options,
+    name: "postOverview"
+  }),
+  graphql<Result, OwnProps>(queries.getPostDetails, {
+    options,
+    name: "postDetails"
+  })
 )(PostShowBase);
 
 export { PostShow };

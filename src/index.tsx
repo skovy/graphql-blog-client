@@ -1,3 +1,4 @@
+import { toIdValue } from "apollo-client";
 import * as React from "react";
 import { ApolloClient, createNetworkInterface } from "react-apollo";
 import { ApolloProvider } from "react-apollo";
@@ -14,13 +15,24 @@ import { Write } from "containers/write";
 // Include the default styles for the Draftjs editor
 import "draft-js/dist/Draft.css";
 
+// The unique ID for each object using the object type and ID
+const dataIdFromObject = (o: { __typename: string, id: string }) => `${o.__typename}:${o.id}`;
+
 const client = new ApolloClient({
-  // Configure the unique ID for each object using the object type and ID
-  dataIdFromObject: (o: { __typename: string, id: string }) => `${o.__typename}:${o.id}`,
+  dataIdFromObject,
   networkInterface: createNetworkInterface({
     // Configure the GraphQL endpoint
     uri: process.env.GRAPHQL_API_URI
-  })
+  }),
+  customResolvers: {
+    Query: {
+      post: (_, { id }) => {
+        console.log("GET POsT");
+        console.log(toIdValue(dataIdFromObject({ __typename: "Post", id })))
+        return toIdValue(dataIdFromObject({ __typename: "Post", id }));
+      }
+    }
+  }
 });
 
 // Override the global body styles and add default styles

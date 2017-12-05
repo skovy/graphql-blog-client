@@ -12,7 +12,7 @@ interface Props {
   // Whether or not the text should be "richly" displayed
   richText?: boolean;
   // The post to display the text of
-  post: PostType;
+  post: Partial<PostType>;
 }
 
 class PostTextBase extends React.Component<Props> {

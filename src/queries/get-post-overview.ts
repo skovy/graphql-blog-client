@@ -2,13 +2,13 @@ import gql from "graphql-tag";
 
 import { fragments } from "fragments";
 
-const getPosts = gql`
-  query GetPosts {
-    posts {
+const getPostOverview = gql`
+  query GetPostOverview($id: ID!) {
+    post(id: $id) {
       ...PostOverview
     }
   }
   ${fragments.postOverview}
 `;
 
-export { getPosts };
+export { getPostOverview };

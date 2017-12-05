@@ -26,12 +26,14 @@ const PostedAt = styled.div`
 
 interface Props {
   className?: string;
-  post: PostType;
+  post: Partial<PostType>;
 }
 
 class PostMetadataBase extends React.Component<Props> {
   public render() {
     const { className, post: { author, createdAt } } = this.props;
+
+    if (!author || !createdAt) { return null; }
 
     return (
       <div className={className}>

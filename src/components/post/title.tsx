@@ -32,7 +32,7 @@ class PostTitleBase extends React.Component<Props> {
     const { client, post: { id } } = this.props;
 
     client.query({
-      query: queries.getPost,
+      query: queries.getPostDetails,
       variables: { id }
     });
   }

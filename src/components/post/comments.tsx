@@ -7,16 +7,24 @@ import { PostType } from "types";
 
 interface Props {
   className?: string;
-  post: PostType;
+  post: Partial<PostType>;
 }
 
 class PostCommentsBase extends React.Component<Props> {
   public render() {
-    const { className, post: { comments } } = this.props;
+    const { className, post } = this.props;
+
+    if (!post || !post.comments) {
+      return (
+        <span>
+          <i className="fa fa-circle-o-notch fa-spin" /> Loading comments...
+        </span>
+      );
+    }
 
     return (
       <div className={className}>
-        {comments.map((comment) => <Comment comment={comment} key={comment.id} />)}
+        {post.comments.map((comment) => <Comment comment={comment} key={comment.id} />)}
       </div>
     );
   }
