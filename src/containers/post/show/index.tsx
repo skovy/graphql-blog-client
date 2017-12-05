@@ -2,6 +2,7 @@ import * as React from "react";
 import { compose, graphql, QueryProps } from "react-apollo";
 
 import { Container } from "components/container";
+import { Loading } from "components/loading";
 import { PageTitle } from "components/page-title";
 import { PostComments } from "components/post/comments";
 import { PostMetadata } from "components/post/metadata";
@@ -36,7 +37,7 @@ class PostShowBase extends React.Component<Props> {
     const { postOverview, postDetails } = this.props;
 
     if (postOverview && postOverview.loading) {
-      return <div>Loading</div>;
+      return <Loading text="Loading post..." />;
     } else if (postOverview && postOverview.error) {
       return <div>{postOverview.error}</div>;
     } else if (postOverview && !postOverview.post) {

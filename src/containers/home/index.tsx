@@ -2,6 +2,7 @@ import * as React from "react";
 import { ChildProps, graphql } from "react-apollo";
 
 import { Container } from "components/container";
+import { Loading } from "components/loading";
 import { PageTitle } from "components/page-title";
 import { Post } from "components/post";
 import { queries } from "queries";
@@ -29,7 +30,7 @@ class HomeBase extends React.Component<Props> {
     const { data } = this.props;
 
     if (data && data.loading) {
-      return <div>Loading</div>;
+      return <Loading text="Loading posts..." />;
     } else if (data && data.error) {
       return <div>{data.error}</div>;
     } else if (data && data.posts && !data.posts.length) {

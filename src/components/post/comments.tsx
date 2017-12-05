@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 import { Comment } from "components/comment";
+import { Loading } from "components/loading";
 import { config } from "config";
 import { PostType } from "types";
 
@@ -15,11 +16,7 @@ class PostCommentsBase extends React.Component<Props> {
     const { className, post } = this.props;
 
     if (!post || !post.comments) {
-      return (
-        <span>
-          <i className="fa fa-circle-o-notch fa-spin" /> Loading comments...
-        </span>
-      );
+      return <Loading text="Loading comments..." />;
     }
 
     return (

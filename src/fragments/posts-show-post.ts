@@ -1,23 +1,15 @@
 import gql from "graphql-tag";
 
-import { postsShowComment } from "./posts-show-comment";
+import { postDetails } from "./post-details";
+import { postOverview } from "./post-overview";
 
 const postsShowPost = gql`
   fragment PostsShowPost on Post {
-    id
-    createdAt
-    text
-    title
-    errors
-    author {
-      id
-      name
-    }
-    comments {
-      ...PostsShowComment
-    }
+    ...PostOverview
+    ...PostDetails
   }
-  ${postsShowComment}
+  ${postDetails}
+  ${postOverview}
 `;
 
 export { postsShowPost };
